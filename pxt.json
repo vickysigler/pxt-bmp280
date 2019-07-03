@@ -1,6 +1,6 @@
 {
     "name": "pxt-bmp280",
-    "version": "0.0.7",
+    "version": "1.0.0",
     "description": "",
     "dependencies": {
         "core": "*",
