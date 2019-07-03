@@ -1,7 +1,7 @@
 /**
  * Provides support for the BMP280 barometer module.
  */
-//% color=#7300ff weight=0 icon="\uf0c2" block="Barometer"
+//% color=#7300ff weight=0 icon="\uf0e4" block="Barometer"
 namespace barometer {
     /**
      * Initialises the BMP280 module
