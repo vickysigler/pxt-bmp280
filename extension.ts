@@ -14,7 +14,6 @@ namespace barometer {
      * Changes the default I2C address from 0x77 to the provided address
      * @param The I2C address to use; eg: 0x76
      */
-    //% block
     //% shim=bmp280::setAddress
     export function setAddress(address: number): void { return }
 
