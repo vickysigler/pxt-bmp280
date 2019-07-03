@@ -1,5 +1,5 @@
-bmp280.init();
+barometer.init();
 
 basic.forever(() => {
-    basic.showNumber(bmp280.getPressure());
+    basic.showNumber(barometer.getPressure());
 })
