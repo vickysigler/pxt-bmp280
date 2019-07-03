@@ -13,7 +13,7 @@ namespace bmp280 {
 
     //%
     void init() {
-        barometer = BMP280(0x77);
+        barometer = BMP280(i2c_address);
         barometer.init();
     }
 
