@@ -4,7 +4,6 @@
 using namespace pxt;
 
 namespace bmp280 {
-    BMP280 barometer;
     int i2c_address = 0x77;
 
     //%
@@ -14,7 +13,7 @@ namespace bmp280 {
 
     //%
     void init() {
-        barometer = BMP280(i2c_address);
+        barometer = BMP280(0x77);
         barometer.init();
     }
 
