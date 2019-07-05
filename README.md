@@ -2,6 +2,8 @@
 
 A port of the Seeed-Studio Grove BMP280 library to the micro:bit (as none others seemed to work), however it works with any BMP280 module. The altitude calculation was ommited due to the inherent inaccuracy of using standard pressure to determine altitude. If one is needed however it can easily be coded into the main program using the standard altitude calculation formula.
 
+I used this Grove BMP280 module for development (https://www.seeedstudio.com/Grove-Barometer-Sensor-BMP28-p-2652.html), but as previously stated this code should work with any brand (Adafruit, etc.)
+
 ## Functions
 
 ### setAddress(address)
