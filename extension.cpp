@@ -5,6 +5,7 @@ using namespace pxt;
 
 namespace bmp280 {
     int i2c_address = 0x77;
+    BMP280 barometer;
 
     //%
     void setAddress(int address) {
