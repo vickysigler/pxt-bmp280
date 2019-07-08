@@ -12,7 +12,7 @@ I used this Grove BMP280 module for development (https://www.seeedstudio.com/Gro
 barometer.setAddress(0x76)
 ```
 
-Changes the I2C address of the barometer, which defaults to 0x77.
+Changes the I2C address of the barometer, which defaults to 0x77. If this is used as a block, you will need to pass the decimal representation of the address as the blocks do not support hex (e.g. 0x77 becomes 119)
 
 ### init()
 
