@@ -20,7 +20,7 @@ Changes the I2C address of the barometer, which defaults to 0x77. If this is use
 barometer.init()
 ```
 
-Initialises the barometer, required to start using it. If the address hasn't been changed in advanced, it will use the default address of 0x77.
+Initialises the barometer, required to start using it. If the address hasn't been changed in advance, it will use the default address of 0x77.
 
 ### getPressure()
 
