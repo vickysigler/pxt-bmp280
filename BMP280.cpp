@@ -2,7 +2,7 @@
  * BMP280 Microbit Library
  * Adapted from https://github.com/Seeed-Studio/Grove_BMP280
  * 
- * Paul Clavier, 2019
+ * Rebecca Clavier, 2019
  * Licensed under the MIT license
 */
 
