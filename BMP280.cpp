@@ -76,7 +76,8 @@ float BMP280::getTemperature(void)
 
 float BMP280::getPressure(void)
 {
-    int64_t var1, var2, p;
+    int64_t var1, var2;
+    float p;
 
     // Call getTemperature to get t_fine
     getTemperature();
