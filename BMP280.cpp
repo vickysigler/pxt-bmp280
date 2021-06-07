@@ -100,7 +100,7 @@ float BMP280::getPressure(void)
     var1 = (((int64_t)dig_P9) * (p >> 13) * (p >> 13)) >> 25;
     var2 = (((int64_t)dig_P8) * p) >> 19;
     p = ((p + var1 + var2) >> 8) + (((int64_t)dig_P7) << 4);
-    return (float)p / 256;
+    return p / 256;
 }
 
 uint8_t BMP280::bmp280Read8(uint8_t reg)
