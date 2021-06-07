@@ -27,4 +27,9 @@ namespace bmp280 {
     float getTemperature() {
         return barometer.getTemperature();
     }
+    
+     //%
+    float getAltitude() {
+        return barometer.getAltitude();
+    }
 }
