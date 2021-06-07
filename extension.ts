@@ -31,4 +31,12 @@ namespace barometer {
     //% block="temperature"
     //% shim=bmp280::getTemperature
     export function getTemperature(): number { return 0 }
+    
+    /**
+     * Returns the calculated altitude in meters
+     */
+    //% block="altitude"
+    //% shim=bmp280::getAltitude
+    export function getAltitude(): number { return 0 }
+    getAltitude
 }
