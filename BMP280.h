@@ -43,7 +43,7 @@ public:
   BMP280(int i2c_addr);
   bool init();
   float getTemperature(void);
-  uint32_t getPressure(void);
+  float getPressure(void);
 private:
   int _devAddr;
   MicroBitI2C i2c;
