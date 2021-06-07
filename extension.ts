@@ -38,5 +38,5 @@ namespace barometer {
     //% block="altitude"
     //% shim=bmp280::getAltitude
     export function getAltitude(): number { return 0 }
-    getAltitude
+    
 }
