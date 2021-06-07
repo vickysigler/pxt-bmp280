@@ -76,31 +76,43 @@ float BMP280::getTemperature(void)
 
 float BMP280::getPressure(void)
 {
-    int64_t var1, var2;
-    float p;
+ int64_t var1, var2, p;
 
-    // Call getTemperature to get t_fine
-    getTemperature();
+  // Must be done first to get the t_fine variable set up
+  readTemperature();
 
-    int32_t adc_P = bmp280Read24(BMP280_REG_PRESSUREDATA);
-    adc_P >>= 4;
+  int32_t adc_P = read24(BMP280_REGISTER_PRESSUREDATA);
+  adc_P >>= 4;
 
-    var1 = ((int64_t)t_fine) - 128000;
-    var2 = var1 * var1 * (int64_t)dig_P6;
-    var2 = var2 + ((var1 * (int64_t)dig_P5) << 17);
-    var2 = var2 + (((int64_t)dig_P4) << 35);
-    var1 = ((var1 * var1 * (int64_t)dig_P3) >> 8) + ((var1 * (int64_t)dig_P2) << 12);
-    var1 = (((((int64_t)1) << 47) + var1)) * ((int64_t)dig_P1) >> 33;
-    if (var1 == 0)
-    {
-        return 0; // avoid exception caused by division by zero
-    }
-    p = 1048576 - adc_P;
-    p = (((p << 31) - var2) * 3125) / var1;
-    var1 = (((int64_t)dig_P9) * (p >> 13) * (p >> 13)) >> 25;
-    var2 = (((int64_t)dig_P8) * p) >> 19;
-    p = ((p + var1 + var2) >> 8) + (((int64_t)dig_P7) << 4);
-    return p / 256;
+  var1 = ((int64_t)t_fine) - 128000;
+  var2 = var1 * var1 * (int64_t)_bmp280_calib.dig_P6;
+  var2 = var2 + ((var1 * (int64_t)_bmp280_calib.dig_P5) << 17);
+  var2 = var2 + (((int64_t)_bmp280_calib.dig_P4) << 35);
+  var1 = ((var1 * var1 * (int64_t)_bmp280_calib.dig_P3) >> 8) +
+         ((var1 * (int64_t)_bmp280_calib.dig_P2) << 12);
+  var1 = (((((int64_t)1) << 47) + var1)) * ((int64_t)_bmp280_calib.dig_P1) >> 33;
+
+  if (var1 == 0) {
+    return 0; // avoid exception caused by division by zero
+  }
+  p = 1048576 - adc_P;
+  p = (((p << 31) - var2) * 3125) / var1;
+  var1 = (((int64_t)_bmp280_calib.dig_P9) * (p >> 13) * (p >> 13)) >> 25;
+  var2 = (((int64_t)_bmp280_calib.dig_P8) * p) >> 19;
+
+  p = ((p + var1 + var2) >> 8) + (((int64_t)_bmp280_calib.dig_P7) << 4);
+  return (float)p / 256;
+}
+
+float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
+  float altitude;
+
+  float pressure = readPressure(); // in Si units for Pascal
+  pressure /= 100;
+
+  altitude = 44330 * (1.0 - pow(pressure / seaLevelhPa, 0.1903));
+
+  return altitude;
 }
 
 uint8_t BMP280::bmp280Read8(uint8_t reg)
