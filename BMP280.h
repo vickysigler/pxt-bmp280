@@ -44,6 +44,7 @@ public:
   bool init();
   float getTemperature(void);
   float getPressure(void);
+  float readAltitude(float seaLevelhPa = 1013.25);
 private:
   int _devAddr;
   MicroBitI2C i2c;
