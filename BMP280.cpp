@@ -74,7 +74,7 @@ float BMP280::getTemperature(void)
     return T / 100;
 }
 
-uint32_t BMP280::getPressure(void)
+float BMP280::getPressure(void)
 {
     int64_t var1, var2, p;
 
@@ -99,7 +99,7 @@ uint32_t BMP280::getPressure(void)
     var1 = (((int64_t)dig_P9) * (p >> 13) * (p >> 13)) >> 25;
     var2 = (((int64_t)dig_P8) * p) >> 19;
     p = ((p + var1 + var2) >> 8) + (((int64_t)dig_P7) << 4);
-    return (uint32_t)p / 256;
+    return (float)p / 256;
 }
 
 uint8_t BMP280::bmp280Read8(uint8_t reg)
